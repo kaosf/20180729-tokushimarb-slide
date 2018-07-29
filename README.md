@@ -75,7 +75,7 @@ sudo docker run -d --restart=always -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 13306:3
 ```sh
 rails new my_webpacker_app -d postgresql
 # or
-bundle exec new my_sample_app -d mysql
+bundle exec rails new my_sample_app -d mysql
 # などなど…
 ```
 
