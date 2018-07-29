@@ -336,7 +336,8 @@ RUN apt-get update &amp;&amp; apt-get -y install apt-transport-https &amp;&amp; 
 <h1>Railsサーバ起動前の開発完了</h1>
 <div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="bu">export</span> <span class="va">DB_PORT=</span>15432</a>
 <a class="sourceLine" id="cb23-2" data-line-number="2"><span class="co"># export DB_HOST=example.com # 必要に応じて追加</span></a>
-<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="ex">bin/rails</span> db:setup</a></code></pre></div>
+<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="ex">bin/rails</span> db:create</a>
+<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="ex">bin/rails</span> db:migrate</a></code></pre></div>
 <p>※開発時に<code>DATABASE_URL</code>を指定するのはdevelopmentとtestのDB名が衝突するため非常に面倒になるのでやめときます</p>
 <p>※ていうか今回の所詮デモであれば <code>config/database.yml</code> に直書きしても支障はありません</p>
 </div>

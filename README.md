@@ -331,7 +331,8 @@ MySQLの人はデフォルト値を `root`, `3306` などとしておきまし�
 ```sh
 export DB_PORT=15432
 # export DB_HOST=example.com # 必要に応じて追加
-bin/rails db:setup
+bin/rails db:create
+bin/rails db:migrate
 ```
 
 ※開発時に`DATABASE_URL`を指定するのはdevelopmentとtestのDB名が衝突するため非常に面倒になるのでやめときます
