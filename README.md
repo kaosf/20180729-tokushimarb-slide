@@ -360,6 +360,12 @@ bin/rails g controller home index
 </div>
 ```
 
+# Railsサーバ起動前の開発完了
+
+本番環境でJSのランタイムが無いよと言われないようにしておきます
+
+`Gemfile`の`mini_racer`というgemのコメントアウトを外して`bin/bundle install`します
+
 # Rails起動
 
 Rubyのコンテナで動いているbash上で以下を実行すればOKです

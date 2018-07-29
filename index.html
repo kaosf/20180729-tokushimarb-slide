@@ -356,6 +356,11 @@ RUN apt-get update &amp;&amp; apt-get -y install apt-transport-https &amp;&amp; 
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
 </div>
+<div id="railsサーバ起動前の開発完了-3" class="slide section level1">
+<h1>Railsサーバ起動前の開発完了</h1>
+<p>本番環境でJSのランタイムが無いよと言われないようにしておきます</p>
+<p><code>Gemfile</code>の<code>mini_racer</code>というgemのコメントアウトを外して<code>bin/bundle install</code>します</p>
+</div>
 <div id="rails起動" class="slide section level1">
 <h1>Rails起動</h1>
 <p>Rubyのコンテナで動いているbash上で以下を実行すればOKです</p>
