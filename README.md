@@ -36,14 +36,10 @@ Rubyのインストール (言わずもがな)
 
 # 準備
 
-<ul>
-<li>Docker: [https://docs.docker.com/install/#supported-platforms](https://docs.docker.com/install/#supported-platforms)</li>
-<li>Node.js: nodebrewとかnodenvとか好きに使うと良いです</li>
-  <ul>
-  <li>nodebrew: [https://github.com/hokaccha/nodebrew](https://github.com/hokaccha/nodebrew) (私はnodebrew使ってる)</li>
-  </ul>
-<li>Yarn: [https://yarnpkg.com/lang/ja/docs/install/#arch-stable](https://yarnpkg.com/lang/ja/docs/install/#arch-stable)</li>
-</ul>
+- Docker: [https://docs.docker.com/install/#supported-platforms](https://docs.docker.com/install/#supported-platforms)
+- Node.js: nodebrewとかnodenvとか好きに使うと良いです
+  - nodebrew: [https://github.com/hokaccha/nodebrew](https://github.com/hokaccha/nodebrew) (私はnodebrew使ってる)
+- Yarn: [https://yarnpkg.com/lang/ja/docs/install/#arch-stable](https://yarnpkg.com/lang/ja/docs/install/#arch-stable)
 
 # DBコンテナ
 
@@ -59,12 +55,10 @@ sudo docker run -d --restart=always -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 13306:3
 
 これに
 
-<ul>
-<li>host: localhost</li>
-<li>port: 15432 (MySQLなら 13306)(ここは各自が自由に変える)</li>
-<li>user: postgres (MySQLなら root)</li>
-<li>password: "" (無し)(空文字列)</li>
-</ul>
+- host: localhost
+- port: 15432 (MySQLなら 13306)(ここは各自が自由に変える)
+- user: postgres (MySQLなら root)
+- password: "" (無し)(空文字列)
 
 で接続するのが簡単で環境を汚しません
 
@@ -292,11 +286,9 @@ RUN apt-get update && apt-get -y install apt-transport-https && \
 
 ## 参考
 
-<ul>
-<li>[https://github.com/hokaccha/nodebrew](https://github.com/hokaccha/nodebrew)</li>
-<li>[https://yarnpkg.com/lang/en/docs/install/#debian-stable](https://yarnpkg.com/lang/en/docs/install/#debian-stable)</li>
-<li>[http://scribble.washo3.com/linux/debian%E3%81%A7sourcelist%E5%86%85%E3%81%AEhttp...](http://scribble.washo3.com/linux/debian%E3%81%A7sourcelist%E5%86%85%E3%81%AEhttps%E3%81%8C%E5%8F%96%E5%BE%97%E5%87%BA%E6%9D%A5%E3%81%AA%E3%81%84%E3%81%A8%E3%81%8D.html)</li>
-</ul>
+- [https://github.com/hokaccha/nodebrew](https://github.com/hokaccha/nodebrew)
+- [https://yarnpkg.com/lang/en/docs/install/#debian-stable](https://yarnpkg.com/lang/en/docs/install/#debian-stable)
+- [http://scribble.washo3.com/linux/debian%E3%81%A7sourcelist%E5%86%85%E3%81%AEhttp...](http://scribble.washo3.com/linux/debian%E3%81%A7sourcelist%E5%86%85%E3%81%AEhttps%E3%81%8C%E5%8F%96%E5%BE%97%E5%87%BA%E6%9D%A5%E3%81%AA%E3%81%84%E3%81%A8%E3%81%8D.html)
 
 # CSS, JavaScriptの用意
 
