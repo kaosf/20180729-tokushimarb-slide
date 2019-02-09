@@ -33,7 +33,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -106,7 +106,7 @@ ka
 </div>
 <div id="このページとリポジトリ" class="slide section level1">
 <h1>このページとリポジトリ</h1>
-<p><a href="https://kaosf.github.io/20180729-tokushimarb-slide" class="uri">https://kaosf.github.io/20180729-tokushimarb-slide</a></p>
+<p><a href="https://kaosf.github.io/20180729-tokushimarb-slide">https://kaosf.github.io/20180729-tokushimarb-slide</a></p>
 <p>Repository: <a href="https://github.com/kaosf/20180729-tokushimarb-slide">kaosf/20180729-tokushimarb-slide - GitHub</a></p>
 </div>
 <div id="準備" class="slide section level1">
@@ -118,119 +118,103 @@ ka
 <div id="準備-1" class="slide section level1">
 <h1>準備</h1>
 <ul>
-<li>
-Docker: <a href="https://docs.docker.com/install/#supported-platforms" class="uri">https://docs.docker.com/install/#supported-platforms</a>
-</li>
-<li>
-Node.js: nodebrewとかnodenvとか好きに使うと良いです
-</li>
+<li>Docker: <a href="https://docs.docker.com/install/#supported-platforms">https://docs.docker.com/install/#supported-platforms</a></li>
+<li>Node.js: nodebrewとかnodenvとか好きに使うと良いです
 <ul>
-<li>
-nodebrew: <a href="https://github.com/hokaccha/nodebrew" class="uri">https://github.com/hokaccha/nodebrew</a> (私はnodebrew使ってる)
-</li>
-</ul>
-<li>
-Yarn: <a href="https://yarnpkg.com/lang/ja/docs/install/#arch-stable" class="uri">https://yarnpkg.com/lang/ja/docs/install/#arch-stable</a>
-</li>
+<li>nodebrew: <a href="https://github.com/hokaccha/nodebrew">https://github.com/hokaccha/nodebrew</a> (私はnodebrew使ってる)</li>
+</ul></li>
+<li>Yarn: <a href="https://yarnpkg.com/lang/ja/docs/install/#arch-stable">https://yarnpkg.com/lang/ja/docs/install/#arch-stable</a></li>
 </ul>
 </div>
 <div id="dbコンテナ" class="slide section level1">
 <h1>DBコンテナ</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">sudo</span> docker run -d --restart=always -p 15432:5432 postgres:10.3</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> docker run -d --restart=always -p 15432:5432 postgres:10.3</a></code></pre></div>
 <p>または</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="fu">sudo</span> docker run -d --restart=always -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 13306:3306 mysql:5.7.22</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="fu">sudo</span> docker run -d --restart=always -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -p 13306:3306 mysql:5.7.22</a></code></pre></div>
 <p>これに</p>
 <ul>
-<li>
-host: localhost
-</li>
-<li>
-port: 15432 (MySQLなら 13306)(ここは各自が自由に変える)
-</li>
-<li>
-user: postgres (MySQLなら root)
-</li>
-<li>
-password: &quot;&quot; (無し)(空文字列)
-</li>
+<li>host: localhost</li>
+<li>port: 15432 (MySQLなら 13306)(ここは各自が自由に変える)</li>
+<li>user: postgres (MySQLなら root)</li>
+<li>password: "" (無し)(空文字列)</li>
 </ul>
 <p>で接続するのが簡単で環境を汚しません</p>
 <p>※SQLite3を使うのは個人でやるもの以外ではよほどの理由が無い限りやめましょう</p>
 </div>
 <div id="railsプロジェクト" class="slide section level1">
 <h1>Railsプロジェクト</h1>
-<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="ex">rails</span> new my_webpacker_app -d postgresql</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># or</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="ex">bundle</span> exec rails new my_sample_app -d mysql</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co"># などなど…</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">rails</span> new my_webpacker_app -d postgresql</a>
+<a class="sourceLine" id="cb3-2" title="2"><span class="co"># or</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="ex">bundle</span> exec rails new my_sample_app -d mysql</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co"># などなど…</span></a></code></pre></div>
 </div>
 <div id="webpacker導入" class="slide section level1">
 <h1>webpacker導入</h1>
 <p><code>Gemfile</code>に以下を追加して</p>
 <pre><code>gem &#39;webpacker&#39;, &#39;3.5.0&#39;</code></pre>
 <p><code>Gemfile.lock</code>更新</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="ex">bin/bundle</span> install</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co"># or</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="ex">bin/bundle</span> install --path vendor/bundle</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">bin/bundle</span> install</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co"># or</span></a>
+<a class="sourceLine" id="cb5-3" title="3"><span class="ex">bin/bundle</span> install --path vendor/bundle</a></code></pre></div>
 </div>
 <div id="railsプロジェクト初期化時に実は" class="slide section level1">
 <h1>Railsプロジェクト(初期化時に実は…)</h1>
 <p>実はRails 5.1からは</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="ex">rails</span> new --webpack</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">rails</span> new --webpack</a></code></pre></div>
 <p>オプションが使えました(気付かなかった)</p>
 <p>と言ってもGemfileの更新までやってくれてるだけっぽいので気にしなくて良いです(多分)</p>
 </div>
 <div id="webpacker導入-1" class="slide section level1">
 <h1>webpacker導入</h1>
-<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="ex">bin/rails</span> webpacker:install</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">bin/rails</span> webpacker:install</a></code></pre></div>
 <p>時間掛かります</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="ex">bin/yarn</span> install</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">bin/yarn</span> install</a></code></pre></div>
 <p>時間掛かります</p>
 </div>
 <div id="bootstrap導入" class="slide section level1">
 <h1>Bootstrap導入</h1>
-<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="ex">bin/yarn</span> add bootstrap</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">bin/yarn</span> add bootstrap</a></code></pre></div>
 <p><code>package.json</code>は手動で編集しない方が良いです</p>
 <p><code>yarn.lock</code>も同時に変更されます</p>
 </div>
 <div id="bootstrap導入-1" class="slide section level1">
 <h1>Bootstrap導入</h1>
 <p><code>app/javascript/packs/application.js</code>を編集</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="st">-console.log(&#39;Hello World from Webpacker&#39;)</span></a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="va">+import &#39;../stylesheet&#39;</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb10-1" title="1"><span class="st">-console.log(&#39;Hello World from Webpacker&#39;)</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="va">+import &#39;../stylesheet&#39;</span></a></code></pre></div>
 <p><code>app/javascript/stylesheet.scss</code>を作成</p>
 <pre class="scss"><code>@import &quot;~bootstrap/scss/bootstrap&quot;;</code></pre>
 <p>なんか変な感じですがWebpackerで扱うCSSは<code>app/javascript</code>内に置きます</p>
 </div>
 <div id="rails-ujs復活" class="slide section level1">
 <h1>rails-ujs復活</h1>
-<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="ex">bin/yarn</span> add rails-ujs</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="ex">bin/yarn</span> add rails-ujs</a></code></pre></div>
 </div>
 <div id="rails-ujs復活-1" class="slide section level1">
 <h1>rails-ujs復活</h1>
 <p><code>app/javascript/packs/application.js</code>を以下のように編集します</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb13-1" data-line-number="1"> // layout file, like app/views/layouts/application.html.erb</a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb13-3" data-line-number="3"><span class="va">+import Rails from &#39;rails-ujs&#39;</span></a>
-<a class="sourceLine" id="cb13-4" data-line-number="4"><span class="va">+Rails.start()</span></a>
-<a class="sourceLine" id="cb13-5" data-line-number="5"><span class="va">+</span></a>
-<a class="sourceLine" id="cb13-6" data-line-number="6"> import &#39;../stylesheet&#39;</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb13-1" title="1"> // layout file, like app/views/layouts/application.html.erb</a>
+<a class="sourceLine" id="cb13-2" title="2"></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="va">+import Rails from &#39;rails-ujs&#39;</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="va">+Rails.start()</span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="va">+</span></a>
+<a class="sourceLine" id="cb13-6" title="6"> import &#39;../stylesheet&#39;</a></code></pre></div>
 <p>これが無いと例えばRailsがscaffoldで生成するdestroyアクションのあのボタンとかがちゃんと動きません</p>
 </div>
 <div id="webpacker導入-2" class="slide section level1">
 <h1>webpacker導入</h1>
 <p><code>app/views/layouts/application.html.erb</code>を編集</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="st">-    &lt;%= stylesheet_link_tag    &#39;application&#39;, media: &#39;all&#39;, &#39;data-turbolinks-track&#39;: &#39;reload&#39; %&gt;</span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">-    &lt;%= javascript_include_tag &#39;application&#39;, &#39;data-turbolinks-track&#39;: &#39;reload&#39; %&gt;</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="va">+    &lt;%= javascript_pack_tag &#39;application&#39; %&gt;</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="va">+    &lt;%= stylesheet_pack_tag &#39;application&#39; %&gt;</span></a></code></pre></div>
-<p>参考 <a href="https://github.com/rails/webpacker#usage" class="uri">https://github.com/rails/webpacker#usage</a></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb14-1" title="1"><span class="st">-    &lt;%= stylesheet_link_tag    &#39;application&#39;, media: &#39;all&#39;, &#39;data-turbolinks-track&#39;: &#39;reload&#39; %&gt;</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="st">-    &lt;%= javascript_include_tag &#39;application&#39;, &#39;data-turbolinks-track&#39;: &#39;reload&#39; %&gt;</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="va">+    &lt;%= javascript_pack_tag &#39;application&#39; %&gt;</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="va">+    &lt;%= stylesheet_pack_tag &#39;application&#39; %&gt;</span></a></code></pre></div>
+<p>参考 <a href="https://github.com/rails/webpacker#usage">https://github.com/rails/webpacker#usage</a></p>
 </div>
 <div id="section" class="slide section level1">
 <h1></h1>
 <p>これでwebpackerの導入はおしまい</p>
 <p>後は</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="ex">bin/rails</span> assets:precompile</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb15-1" title="1"><span class="ex">bin/rails</span> assets:precompile</a></code></pre></div>
 <p>を通常通りに行います</p>
 <p>成果物が <code>public/packs</code> に出来上がるのでこれを本番環境にコピーしてやります</p>
 <p>※本番環境で作らないのか？という理由は後ほど</p>
@@ -239,32 +223,32 @@ password: &quot;&quot; (無し)(空文字列)
 <h1>Rubyコンテナ</h1>
 <p>本番稼働時の想定</p>
 <p>永続化するものを確保する場所作成</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="fu">sudo</span> mkdir -p /var/docker/rails</a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="fu">sudo</span> mkdir /var/docker/rails/bundle</a>
-<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="fu">sudo</span> mkdir /var/docker/rails/log</a>
-<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="fu">sudo</span> mkdir /var/docker/rails/tmp</a>
-<a class="sourceLine" id="cb16-5" data-line-number="5"><span class="fu">sudo</span> mkdir /var/docker/rails/pack</a>
-<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="fu">sudo</span> chmod o+w /var/docker/rails/pack</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb16-1" title="1"><span class="fu">sudo</span> mkdir -p /var/docker/rails</a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="fu">sudo</span> mkdir /var/docker/rails/bundle</a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="fu">sudo</span> mkdir /var/docker/rails/log</a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="fu">sudo</span> mkdir /var/docker/rails/tmp</a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="fu">sudo</span> mkdir /var/docker/rails/pack</a>
+<a class="sourceLine" id="cb16-6" title="6"><span class="fu">sudo</span> chmod o+w /var/docker/rails/pack</a></code></pre></div>
 <p>※別に <code>/var/docker</code> とかで無く <code>/Users/yourname/foo/bar</code> でも何処でも良いです</p>
 </div>
 <div id="rubyコンテナ-1" class="slide section level1">
 <h1>Rubyコンテナ</h1>
 <p>本番稼働時の想定</p>
 <p>※今のディレクトリ(<code>$PWD</code>)がRailsのプロジェクトルートだとします</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="fu">sudo</span> docker run -it \</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2">  -v <span class="va">$PWD</span>:/app \</a>
-<a class="sourceLine" id="cb17-3" data-line-number="3">  -v /var/docker/rails/bundle:/usr/local/bundle \</a>
-<a class="sourceLine" id="cb17-4" data-line-number="4">  -v /var/docker/rails/log:/app/log \</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5">  -v /var/docker/rails/tmp:/app/tmp \</a>
-<a class="sourceLine" id="cb17-6" data-line-number="6">  -v /var/docker/rails/pack:/app/public/pack \</a>
-<a class="sourceLine" id="cb17-7" data-line-number="7">  -w /app \</a>
-<a class="sourceLine" id="cb17-8" data-line-number="8">  -p 3000:3000 \</a>
-<a class="sourceLine" id="cb17-9" data-line-number="9">  -e TZ=Asia/Tokyo \</a>
-<a class="sourceLine" id="cb17-10" data-line-number="10">  -e DATABASE_URL=postgres://postgres:@172.17.0.1:15432/db \</a>
-<a class="sourceLine" id="cb17-11" data-line-number="11">  -e RAILS_ENV=production \</a>
-<a class="sourceLine" id="cb17-12" data-line-number="12">  -e RAILS_MASTER_KEY=xxxx \</a>
-<a class="sourceLine" id="cb17-13" data-line-number="13">  -e RAILS_SERVE_STATIC_FILES=1 \</a>
-<a class="sourceLine" id="cb17-14" data-line-number="14">  ruby:2.5.1 bash</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb17-1" title="1"><span class="fu">sudo</span> docker run -it \</a>
+<a class="sourceLine" id="cb17-2" title="2">  -v <span class="va">$PWD</span>:/app \</a>
+<a class="sourceLine" id="cb17-3" title="3">  -v /var/docker/rails/bundle:/usr/local/bundle \</a>
+<a class="sourceLine" id="cb17-4" title="4">  -v /var/docker/rails/log:/app/log \</a>
+<a class="sourceLine" id="cb17-5" title="5">  -v /var/docker/rails/tmp:/app/tmp \</a>
+<a class="sourceLine" id="cb17-6" title="6">  -v /var/docker/rails/pack:/app/public/pack \</a>
+<a class="sourceLine" id="cb17-7" title="7">  -w /app \</a>
+<a class="sourceLine" id="cb17-8" title="8">  -p 3000:3000 \</a>
+<a class="sourceLine" id="cb17-9" title="9">  -e TZ=Asia/Tokyo \</a>
+<a class="sourceLine" id="cb17-10" title="10">  -e DATABASE_URL=postgres://postgres:@172.17.0.1:15432/db \</a>
+<a class="sourceLine" id="cb17-11" title="11">  -e RAILS_ENV=production \</a>
+<a class="sourceLine" id="cb17-12" title="12">  -e RAILS_MASTER_KEY=xxxx \</a>
+<a class="sourceLine" id="cb17-13" title="13">  -e RAILS_SERVE_STATIC_FILES=1 \</a>
+<a class="sourceLine" id="cb17-14" title="14">  ruby:2.5.1 bash</a></code></pre></div>
 <p>MySQLの人は</p>
 <pre><code>  -e DATABASE_URL=mysql2://root:@172.17.0.1:13306/db \</code></pre>
 <p>に読み替えて下さい</p>
@@ -279,7 +263,7 @@ password: &quot;&quot; (無し)(空文字列)
 <h1>Rubyコンテナ</h1>
 <p>Bundlerがgemをインストールする場所は <code>/usr/local/bundle</code> です</p>
 <p>参考: <a href="https://github.com/docker-library/ruby/blob/699a04311386ecc98ca242fc9bdee17fb4008863/2.5/alpine3.7/Dockerfile#L100-L110">該当箇所</a></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="ex">bin/bundle</span> install --path vendor/bundle</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb19-1" title="1"><span class="ex">bin/bundle</span> install --path vendor/bundle</a></code></pre></div>
 <p>しても結局 .bundle ディレクトリが作られない(設定が保存されない)ので <code>--path vendor/bundle</code> オプションは使わないが吉</p>
 <p>gemをインストールした状態を使いまわしたいなら大人しくホストに永続化して <code>/usr/local/bundle</code> にマウントしましょう</p>
 <p>もしくは Dockerfile でgemのインストールまで終わらせたイメージでも作っておいてプライベートレジストリに上げておくとデプロイは多分これが一番早いと思います</p>
@@ -301,49 +285,43 @@ RUN apt-get update &amp;&amp; apt-get -y install apt-transport-https &amp;&amp; 
   apt-get update &amp;&amp; apt-get -y install yarn</code></pre>
 <h2 id="参考">参考</h2>
 <ul>
-<li>
-<a href="https://github.com/hokaccha/nodebrew" class="uri">https://github.com/hokaccha/nodebrew</a>
-</li>
-<li>
-<a href="https://yarnpkg.com/lang/en/docs/install/#debian-stable" class="uri">https://yarnpkg.com/lang/en/docs/install/#debian-stable</a>
-</li>
-<li>
-<a href="http://scribble.washo3.com/linux/debian%E3%81%A7sourcelist%E5%86%85%E3%81%AEhttps%E3%81%8C%E5%8F%96%E5%BE%97%E5%87%BA%E6%9D%A5%E3%81%AA%E3%81%84%E3%81%A8%E3%81%8D.html">http://scribble.washo3.com/linux/debian%E3%81%A7sourcelist%E5%86%85%E3%81%AEhttp…</a>
-</li>
+<li><a href="https://github.com/hokaccha/nodebrew">https://github.com/hokaccha/nodebrew</a></li>
+<li><a href="https://yarnpkg.com/lang/en/docs/install/#debian-stable">https://yarnpkg.com/lang/en/docs/install/#debian-stable</a></li>
+<li><a href="http://scribble.washo3.com/linux/debian%E3%81%A7sourcelist%E5%86%85%E3%81%AEhttps%E3%81%8C%E5%8F%96%E5%BE%97%E5%87%BA%E6%9D%A5%E3%81%AA%E3%81%84%E3%81%A8%E3%81%8D.html">http://scribble.washo3.com/linux/debian%E3%81%A7sourcelist%E5%86%85%E3%81%AEhttp…</a></li>
 </ul>
 </div>
 <div id="css-javascriptの用意" class="slide section level1">
 <h1>CSS, JavaScriptの用意</h1>
 <p>手元で作っておいた <code>public/packs/*</code> を <code>/var/docker/rails/packs</code> にコピーすればOKです</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="fu">sudo</span> rm /var/docker/rails/packs/*</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="fu">sudo</span> cp public/packs/* /var/docker/rails/packs</a></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb21-1" title="1"><span class="fu">sudo</span> rm /var/docker/rails/packs/*</a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="fu">sudo</span> cp public/packs/* /var/docker/rails/packs</a></code></pre></div>
 </div>
 <div id="railsサーバ起動前の開発完了" class="slide section level1">
 <h1>Railsサーバ起動前の開発完了</h1>
 <p><code>db/schema.rb</code>をきちんと用意しておきます</p>
 <p><code>config/database.yml</code>を以下のように編集しておきます</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb22-1" data-line-number="1">   # http://guides.rubyonrails.org/configuring.html#database-pooling</a>
-<a class="sourceLine" id="cb22-2" data-line-number="2">   pool: &lt;%= ENV.fetch(&quot;RAILS_MAX_THREADS&quot;) { 5 } %&gt;</a>
-<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="va">+  user: &lt;%= ENV.fetch(&quot;DB_USER&quot;) { &#39;postgres&#39; } %&gt;</span></a>
-<a class="sourceLine" id="cb22-4" data-line-number="4"><span class="va">+  password: &lt;%= ENV.fetch(&quot;DB_PASSWORD&quot;) { &#39;&#39; } %&gt;</span></a>
-<a class="sourceLine" id="cb22-5" data-line-number="5"><span class="va">+  host: &lt;%= ENV.fetch(&quot;DB_HOST&quot;) { &#39;127.0.0.1&#39; } %&gt;</span></a>
-<a class="sourceLine" id="cb22-6" data-line-number="6"><span class="va">+  port: &lt;%= ENV.fetch(&quot;DB_PORT&quot;) { 5432 } %&gt;</span></a>
-<a class="sourceLine" id="cb22-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb22-8" data-line-number="8"> development:</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode diff"><code class="sourceCode diff"><a class="sourceLine" id="cb22-1" title="1">   # http://guides.rubyonrails.org/configuring.html#database-pooling</a>
+<a class="sourceLine" id="cb22-2" title="2">   pool: &lt;%= ENV.fetch(&quot;RAILS_MAX_THREADS&quot;) { 5 } %&gt;</a>
+<a class="sourceLine" id="cb22-3" title="3"><span class="va">+  user: &lt;%= ENV.fetch(&quot;DB_USER&quot;) { &#39;postgres&#39; } %&gt;</span></a>
+<a class="sourceLine" id="cb22-4" title="4"><span class="va">+  password: &lt;%= ENV.fetch(&quot;DB_PASSWORD&quot;) { &#39;&#39; } %&gt;</span></a>
+<a class="sourceLine" id="cb22-5" title="5"><span class="va">+  host: &lt;%= ENV.fetch(&quot;DB_HOST&quot;) { &#39;127.0.0.1&#39; } %&gt;</span></a>
+<a class="sourceLine" id="cb22-6" title="6"><span class="va">+  port: &lt;%= ENV.fetch(&quot;DB_PORT&quot;) { 5432 } %&gt;</span></a>
+<a class="sourceLine" id="cb22-7" title="7"></a>
+<a class="sourceLine" id="cb22-8" title="8"> development:</a></code></pre></div>
 <p>MySQLの人はデフォルト値を <code>root</code>, <code>3306</code> などとしておきましょう</p>
 </div>
 <div id="railsサーバ起動前の開発完了-1" class="slide section level1">
 <h1>Railsサーバ起動前の開発完了</h1>
-<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="bu">export</span> <span class="va">DB_PORT=</span>15432</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="co"># export DB_HOST=example.com # 必要に応じて追加</span></a>
-<a class="sourceLine" id="cb23-3" data-line-number="3"><span class="ex">bin/rails</span> db:create</a>
-<a class="sourceLine" id="cb23-4" data-line-number="4"><span class="ex">bin/rails</span> db:migrate</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb23-1" title="1"><span class="bu">export</span> <span class="va">DB_PORT=</span>15432</a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="co"># export DB_HOST=example.com # 必要に応じて追加</span></a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="ex">bin/rails</span> db:create</a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="ex">bin/rails</span> db:migrate</a></code></pre></div>
 <p>※開発時に<code>DATABASE_URL</code>を指定するのはdevelopmentとtestのDB名が衝突するため非常に面倒になるのでやめときます</p>
 <p>※ていうか今回の所詮デモであれば <code>config/database.yml</code> に直書きしても支障はありません</p>
 </div>
 <div id="railsサーバ起動前の開発完了-2" class="slide section level1">
 <h1>Railsサーバ起動前の開発完了</h1>
-<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="ex">bin/rails</span> g controller home index</a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb24-1" title="1"><span class="ex">bin/rails</span> g controller home index</a></code></pre></div>
 <p><code>app/views/home/index.html.erb</code>編集</p>
 <pre><code>&lt;div class=&quot;container&quot;&gt;
   &lt;div class=&quot;row&quot;&gt;
@@ -364,24 +342,24 @@ RUN apt-get update &amp;&amp; apt-get -y install apt-transport-https &amp;&amp; 
 <div id="rails起動" class="slide section level1">
 <h1>Rails起動</h1>
 <p>Rubyのコンテナで動いているbash上で以下を実行すればOKです</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="ex">bin/bundle</span> install</a>
-<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="ex">bin/rails</span> db:setup</a>
-<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="ex">bin/rails</span> s</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb26-1" title="1"><span class="ex">bin/bundle</span> install</a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="ex">bin/rails</span> db:setup</a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="ex">bin/rails</span> s</a></code></pre></div>
 <p>※雑ですが本気でやりたい人は <code>config/puma.rb</code> をちゃんと編集して</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="ex">bin/bundle</span> exec pumactl start</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb27-1" title="1"><span class="ex">bin/bundle</span> exec pumactl start</a></code></pre></div>
 <p>とかやって下さい</p>
 </div>
 <div id="開発時tips" class="slide section level1">
 <h1>開発時Tips</h1>
-<div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="ex">bin/webpack-dev-server</span></a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode sh"><code class="sourceCode bash"><a class="sourceLine" id="cb28-1" title="1"><span class="ex">bin/webpack-dev-server</span></a></code></pre></div>
 <p>を起動しておく(※<code>bin/rails s</code>と別に)と，CSSやJSを編集したときにブラウザを自動で更新してくれます</p>
 <p>便利</p>
 </div>
 </body>
 </html>
 <!-- Pandoc version:
-pandoc 2.2.1
-Compiled with pandoc-types 1.17.5.1, texmath 0.11.0.1, skylighting 0.7.2
+pandoc 2.5
+Compiled with pandoc-types 1.17.5.4, texmath 0.11.1.2, skylighting 0.7.5
 Default user data directory: <DELETED>
 Copyright (C) 2006-2018 John MacFarlane
 Web:  http://pandoc.org
